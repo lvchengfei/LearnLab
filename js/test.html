@@ -1,0 +1,42 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>timer</title>
+<script type="text/javascript">
+
+document.addEventListener("custom_event",moveHandler,true);
+function moveHandler(event){
+	console.log("custom_event fired at:" + event.timeStamp + "data:" + event.test)
+}
+
+//setTimeout(function(){
+setInterval(function(){
+	var event = document.createEvent('Events')
+	event.initEvent('custom_event')
+	event.test = "testData"
+	document.dispatchEvent(event)
+},2000)
+
+//测试参数不够
+function testTime(a,b,c){
+	console.log(a + b + c)
+
+	if(c>0){
+	 setTimeout(function (){
+	 	console.log('xxx')
+	},1)	
+}
+}
+
+testTime('ad','xx'，1)//js真是太方便了，太随意了。
+//输出 adxxundefined
+
+
+</script>
+
+</head>
+
+<body>
+</body>
+</html>
