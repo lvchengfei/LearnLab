@@ -1,0 +1,48 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>function使用return  dict 提高效率</title>
+<input id = 'myText' ,type="text",  value="input"> </input>
+<script type="text/javascript">
+
+	function Obj(){this.value="对象！";}
+    var value="global 变量";
+    function Fun1(){
+    	//alert(this.value);
+    	console.log(this.value);
+    }
+
+    window.Fun1();   //global 变量
+    Fun1.call(window);  //global 变量
+    Fun1.call(document.getElementById('myText'));  //input text
+    Fun1.call(new Obj());   //对象！
+    
+    window.test = function() {
+    		var num = 2
+    		var num2 = num * 2
+            return {
+                tttt: function(a) {
+                    var e = {};
+                    console.log('get' + num)
+                   // b.call("WVLocation", "getLocation", e, c(a), d())
+                },
+                search: function(a, e) {
+                    var f = {
+                        addrs: a
+                    };
+                    console.log('search' + num2)
+                }
+            }
+        }();
+        
+        console.log(window.test)
+        window.test.tttt()
+        window.test.search()
+        
+</script>
+</head>
+
+<body>
+</body>
+</html>
