@@ -1,0 +1,48 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>arrayDictionary</title>
+<script type="text/javascript">
+
+ function test(title){
+
+		console.log(title)
+		console.log(title['kk'])
+		console.log(typeof title)
+		
+ 		var stack = new Array()		
+ 		var obj = new Object()
+ 		obj.name = 'hello'
+ 		obj.locs = 'qz'
+ 		stack.push('hello')
+ 		stack.push(32423)
+ 		stack.push(obj)
+ 		
+ 		var dict = {}
+ 		dict["111"] = stack
+ 		dict[0] = "000"
+ 		dict[1] = 'data='+new Date().getTime()
+ 		console.log(dict[0] +'\n' + dict["111"])
+ 		
+		console.log(stack[0])
+		console.log(stack.join('\\')) 		
+ 		console.log(obj)
+  		console.log(stack)
+ 		
+ 		console.log(stack.pop())
+ 		
+ 		var dictStr = JSON.stringify(dict)
+		console.log(dictStr)
+}
+		
+		var key1 = "value1"
+		var key2 = "value2"
+		test({key1:key1,key2:key2})
+</script>
+
+</head>
+
+<body>
+</body>
+</html>

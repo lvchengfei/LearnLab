@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>xxxxx</title>
+<script type="text/javascript">
+functions = {
+	init : function init(){
+		console.log('init')
+	},
+	sayHello : function sayHelloWord(){
+		console.log('say helloWord')
+	},
+	testxxx : function testxxx(){
+		console.log('test xxx')
+	},	
+};
+
+var obj = {}
+var hasOwnProperty = Object.prototype.hasOwnProperty
+for (var key in functions){
+	console.log('obj['+key+']'+'=',obj[key])
+	hasOwnProperty.call(obj, key) || (obj[key] = functions[key])
+}
+
+console.log(obj)
+
+for (var key in functions){
+	console.log('obj['+key+']'+'=',obj[key])
+}
+
+</script>
+
+</head>
+
+<body>
+</body>
+</html>
