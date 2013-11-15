@@ -1,0 +1,84 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>test function</title>
+<script type="text/javascript">
+
+var obj = {
+	value : 'obj.value',
+	sayHello : function(){
+		alert(this.value);
+	}
+	
+}
+
+function funcCallByObject(){
+	obj.sayHello();
+}
+
+obj.method = function(){
+	var that = this
+	
+	var helper = function(){
+		that.value = add(that.value , that.value);
+		alert('helper = '+that.value)
+	}
+	
+	//以函数形式调用函数
+	helper();
+}
+
+function funcCallByFun(){
+	obj.method();//以方法方式调用函数，内部调用helper 用函数方式调用
+}
+
+var Quo = function (string ){
+	this.status = string;
+}
+
+function funcCallByCreator(){
+	var myQuo = new Quo("hahaha");
+	alert(myQuo + ' ' + myQuo.status);
+}
+
+function add (a,b){
+	return a+b;
+}
+function funcCallByApply(){
+	var array = [3,4];
+	var sum = add.apply(null,array);
+	alert('sum='+sum);
+	
+}
+
+ function throwException(){
+  
+ 	throw{
+ 		name : "exception",
+ 		message : "test exception"
+ 	};
+ }
+function testTryCatch(){
+	try{
+		throwException();
+	}catch(e){
+		alert("get exception name="+e.name+"message:"+ e.message);
+	}
+}
+
+
+    
+</script>
+
+</head>
+
+<body>
+<button onclick='funcCallByObject()'>方法调用模式</button></br>
+<button onclick='funcCallByFun()'>函数调用模式</button></br>
+<button onclick='funcCallByCreator()'>创建者调用模式</button></br>
+<button onclick='funcCallByApply()'>apply调用模式</button></br>
+<button onclick='testTryCatch()'>函数异常</button></br>
+
+</body>
+</html>
