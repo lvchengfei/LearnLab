@@ -1,0 +1,72 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>test prototype</title>
+<script type="text/javascript">
+
+var obj = {
+	value : 'obj.value',
+	sayHello : function(){
+		alert(this.value);
+	}	
+};
+
+Object.prototype.testMethod = function (){
+	alert("prototype add method");
+	console.log("prototype add method")
+}
+
+function testPrototype(){
+	obj.testMethod();
+}
+
+
+Function.prototype.method = function (name, func){
+		if(!this.prototype[name])
+			this.prototype[name] = func;
+			
+		return this;
+};
+
+//为数字类的函数原型添加方法
+Number.method('str',function(){
+	return this + " xxxx";
+});
+
+function testNumberFuncPrototype(){
+	alert((2343).str());
+}
+
+var kkk = function (){
+		alert("outside")
+        return function(b) {
+        	alert("inner")
+            a && a(b)
+        }
+        
+// 			return window.addEventListener(window.onpagehide ? "pagehide": "unload",
+//             function() {
+//                 //b.api.navigation.reset()
+//             },
+//             !1),
+// 			{
+// 			name : "lily",
+// 			value: "value"
+// 			}
+};
+
+console.log(kkk() + ' ' + typeof kkk());
+
+
+</script>
+
+</head>
+
+<body>
+<button onclick='testPrototype()'>测试prototype</button></br>
+<button onclick='testNumberFuncPrototype()'>测试Number 的function prototype</button></br>
+
+
+</body>
+</html>
