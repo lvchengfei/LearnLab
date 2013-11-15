@@ -1,0 +1,59 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>test function</title>
+<script type="text/javascript">
+
+
+var kkk =  new Array("dfdf","dfd");
+kkk.push('last');
+kkk.forEach(function(a){console.log(a)});
+
+	var test11 = function() {
+		var a = [];
+		return document.addEventListener("customEvent",
+		function(b) {
+			console.log("function b");
+			a.forEach(function(a) {
+				console.log("foreEach[" + typeof a + "]" + a);
+			})
+		},
+		!1),
+		{
+			func1: function () {
+				console.log("func1");
+			}
+			,
+			func2: function (){
+				console.log("func2");
+			}
+			,
+			addItem : function(str){
+				console.log("additem [" + str + "]");
+				a.push(str);
+			}
+		}
+	}();
+        
+function testRetrunAddEvent(){
+   	 test11.addItem("abc");
+   	 test11.addItem(12343);
+	
+   	 var event = document.createEvent('Events');
+     event.initEvent('customEvent');
+     event.test = "testData";
+     document.dispatchEvent(event);
+     
+}
+    
+</script>
+
+</head>
+
+<body>
+
+<button onclick='testRetrunAddEvent()'>函数返回（Event）</button></br>
+
+</body>
+</html>
